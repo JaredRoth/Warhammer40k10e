@@ -5648,12 +5648,49 @@
           ]
         },
         "rules": {
-          "1 can have Icon of Khorne": {
+          "1 in 10 can have Icon of Khorne": {
             "evals": [
+              {
+                "actionable": false,
+                "equation": {
+                  "operator": "T/O",
+                  "value": 5
+                },
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "tally",
+                    "Model"
+                  ]
+                ]
+              },
+              {
+                "actionable": true,
+                "max": [
+                  "{self}",
+                  "rules",
+                  "1 in 10 can have Icon of Khorne",
+                  "evals",
+                  "0",
+                  "result",
+                  "integer"
+                ],
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "tracked",
+                    "Icon of Khorne"
+                  ]
+                ]
+              },
               {
                 "actionable": true,
                 "max": 1,
-                "not": false,
+                "not": true,
                 "operator": "AND",
                 "paths": [
                   [
@@ -5664,7 +5701,7 @@
                 ]
               }
             ],
-            "evaluate": "AND",
+            "evaluate": "OR",
             "failState": "error"
           },
           "1 in 10 can have Mauler": {
